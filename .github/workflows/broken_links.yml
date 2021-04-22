@@ -1,0 +1,33 @@
+name: Broken links
+on:
+  push:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Build devdoc
+          run: |
+            cp .env.example .env
+            docker-compose up -d --build
+
+      - name: Wait 60 seconds
+        uses: juliangruber/sleep-action@v1
+        with:
+          time: 60s
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install 'Broken link checker' on external links
+        run: npm install broken-link-checker -g
+
+      - name: Run tests
+        run: blc ${{ env.SERVER }} -iro
