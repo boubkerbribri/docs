@@ -12,9 +12,9 @@ jobs:
           fetch-depth: 0
 
       - name: Build devdoc
-          run: |
-            cp .env.example .env
-            docker-compose up -d --build
+        run: |
+          cp .env.example .env
+          docker-compose up -d --build
 
       - name: Wait 60 seconds
         uses: juliangruber/sleep-action@v1
