@@ -13,6 +13,7 @@ jobs:
 
       - name: Build devdoc
         run: |
+          sudo apt-get install libcurl4-openssl-dev
           cp .env.example .env
           docker-compose -f docker-compose.yml up --build -d
 
