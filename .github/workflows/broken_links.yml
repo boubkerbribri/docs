@@ -13,9 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build devdoc
-        run: |
-          cp .env.example .env
-          docker-compose -f docker-compose.yml up --build -d
+        run: docker-compose -f docker-compose.yml up --build -d
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           HUGO_SERVER_PORT: "1313"
