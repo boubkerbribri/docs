@@ -26,12 +26,13 @@ jobs:
         run: rm -rf ./src/public
 
       - name: Make assets
-        run: cd src/themes/hugo-theme-learn/_src && npm install && npm run build && cd ../../../
+        run: npm install && npm run build
+        working-directory: src/themes/hugo-theme-learn/_src
 
       - name: Build
-        run: cd src/ && hugo server
+        run: cd src/ && hugo server --quiet
 
-      - name: Install 'Broken link checker' on external links
+      - name: Install 'Broken link checker'
         run: npm install broken-link-checker -g
 
       - name: Run tests
