@@ -3,8 +3,7 @@ version: "3.3"
 services:
 
   hugo:
-    build:
-      context: https://${GH_TOKEN}:@github.com/gohugoio/hugo.git
+    build: https://github.com/gohugoio/hugo.git
     volumes:
       - ./:/site
     working_dir: /site/src
