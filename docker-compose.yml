@@ -3,7 +3,8 @@ version: "3.3"
 services:
 
   hugo:
-    build: https://github.com/gohugoio/hugo.git
+    build:
+      context: https://github.com/gohugoio/hugo.git
     volumes:
       - ./:/site
     working_dir: /site/src
