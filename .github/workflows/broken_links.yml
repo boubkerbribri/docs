@@ -16,6 +16,9 @@ jobs:
         run: |
           cp .env.example .env
           docker-compose -f docker-compose.yml up --build -d
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          HUGO_SERVER_PORT: "1313"
 
       - name: Wait 60 seconds
         uses: juliangruber/sleep-action@v1
