@@ -12,10 +12,10 @@ jobs:
           fetch-depth: 0
 
       - name: Docker build and run
-        run: docker-compose up -f docker-compose.yml --build -d
+        run: docker-compose -f docker-compose.yml up --build -d
 
       - name: Install 'Broken link checker'
-        run: npm install broken-link-checker -g
+        run: npm install broken-link-checker
 
       - name: Run tests
         run: blc ${{ env.SERVER }} -iro
