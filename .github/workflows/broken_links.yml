@@ -12,9 +12,9 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Install clone dependencies
-        run: |
-          docker-compose --version
+      - uses: KengoTODA/actions-setup-docker-compose@main
+        with:
+          version: '1.26.2'
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
