@@ -14,7 +14,7 @@ jobs:
 
       - name: Install clone dependencies
         run: |
-          GIT_TRACE=2 git clone --verbose https://github.com/gohugoio/hugo.git /hugo-repo
+          GIT_TRACE=2 git clone --verbose https://github.com/gohugoio/hugo.git ./hugo-repo
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
