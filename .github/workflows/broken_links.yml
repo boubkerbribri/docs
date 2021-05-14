@@ -13,6 +13,8 @@ jobs:
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
+        env:
+          HUGO_SERVER_PORT: 1313
 
       - name: Install 'Broken link checker'
         run: npm install broken-link-checker
