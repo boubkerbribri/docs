@@ -9,28 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          submodules: true
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.82.0'
-
-      - name: Clean public directory
-        run: rm -rf ./src/public
-
-      - name: Make assets
-        run: npm install && npm run build
-        working-directory: src/themes/hugo-theme-learn/_src
-
-      - name: Build
-        run: cd src/ && hugo server --quiet
+      - name: Docker build and run
+        run: docker-compose up -f docker-compose.yml --build -d
 
       - name: Install 'Broken link checker'
         run: npm install broken-link-checker -g
