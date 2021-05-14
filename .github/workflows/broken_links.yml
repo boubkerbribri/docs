@@ -14,8 +14,11 @@ jobs:
 
       - name: Install clone dependencies
         run: |
-          sudo apt-get update && \
-          sudo apt-get install -y openssl
+          git --version
+          sudo add-apt-repository -y ppa:git-core/ppa
+          sudo apt-get update
+          sudo apt-get install git -y
+          git --version
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
