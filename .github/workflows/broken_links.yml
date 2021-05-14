@@ -14,10 +14,7 @@ jobs:
 
       - name: Install clone dependencies
         run: |
-          sudo mv /usr/local/lib/libssl.so.1.1 /usr/local/lib/libssl.so.1.1.old
-          sudo cp /usr/lib/x86_64-linux-gnu/libssl.so.1.1 /usr/local/lib/
-          sudo mv /usr/local/lib/libcrypto.so.1.1 /usr/local/lib/libcrypto.so.1.1.old
-          sudo cp /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 /usr/local/lib/
+          GIT_TRACE=2 git clone --verbose https://github.com/gohugoio/hugo.git /hugo-repo
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
