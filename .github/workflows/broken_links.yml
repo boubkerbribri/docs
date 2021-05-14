@@ -15,7 +15,7 @@ jobs:
       - name: Install clone dependencies
         run: |
           sudo apt-get update && \
-          sudo apt-get install -y libssl-dev
+          sudo apt-get install -y openssl
 
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
