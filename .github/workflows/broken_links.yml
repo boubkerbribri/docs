@@ -16,6 +16,10 @@ jobs:
         with:
           version: '1.26.2'
 
+      - name: Install clone dependencies
+        run: |
+          docker-compose --version
+
       - name: Docker build and run
         run: docker-compose -f docker-compose.yml up --build -d
         env:
